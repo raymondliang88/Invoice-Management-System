@@ -45,6 +45,19 @@ $ yarn run start:dev
 $ yarn run start:prod
 ```
 
+## Primsa Commands
+
+```bash
+## setup documents and generate tables
+$ npx prisma generate
+
+## Primsa GUI - spin a GUI where it displays all the tables
+$ npx prisma studio
+
+## Seed database
+$ npx prisma db seed
+```
+
 ## Test
 
 ```bash
@@ -57,6 +70,7 @@ $ yarn run test:e2e
 # test coverage
 $ yarn run test:cov
 ```
+
 
 ## Support
 
