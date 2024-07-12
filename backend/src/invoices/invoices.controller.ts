@@ -19,8 +19,8 @@ export class InvoicesController {
 
   @Get('/total')
   @ApiOkResponse({ type: Number })
-  async getTotal(@Param('due_date') due_date: Date, @User('id') userId: number) {
-    return this.invoicesService.getTotal(userId);
+  async getTotal(@Param('due_date') dueDate: Date, @User('id') userId: number) {
+    return this.invoicesService.getTotal(userId, dueDate);
   }
 
   @Get(':id')
