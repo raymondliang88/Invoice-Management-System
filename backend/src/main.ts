@@ -6,13 +6,17 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   const config = new DocumentBuilder()
-    .setTitle('Invoice Management Documentation')
+    .setTitle('Invoice Management System API Documentation')
     .setDescription('General API description')
     .setVersion('0.1')
+    .addBearerAuth(
+      { type: 'http', scheme: 'bearer', bearerFormat: 'JWT', },
+      'JWT',
+    )
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('api', app, document);
+  SwaggerModule.setup('api', app, document, { swaggerOptions: { persistAuthorization: true } });
 
 
   await app.listen(3000);
