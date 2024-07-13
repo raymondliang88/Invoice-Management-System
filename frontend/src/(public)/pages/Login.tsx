@@ -1,11 +1,11 @@
 import React from 'react'
-import { FormHeader } from '~/components/LoginFormHeader'
-import LoginForm from '~/components/forms/LoginForm'
+import { FormHeader } from '../../components/LoginFormHeader'
+import LoginForm from '../../components/forms/LoginForm'
 import { useNavigate } from 'react-router-dom'
-import { ROUTES } from '~/constants/RouteConstants'
-import { authenticateUser } from '~/store/actions/AuthActions'
-import { LoginFormData } from '~/types/LoginFormData'
-import { useAppDispatch } from '~/lib/StoreHooks'
+import { ROUTES } from '../../constants/RouteConstants'
+import { authenticateUser } from '../../store/actions/AuthActions'
+import { LoginFormData } from '../../types/LoginFormData'
+import { useAppDispatch } from '../../lib/StoreHooks'
 
 const LoginPage: React.FC = () => {
     const navigate = useNavigate();

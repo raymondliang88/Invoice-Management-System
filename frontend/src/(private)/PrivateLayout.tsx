@@ -1,6 +1,6 @@
 import { Outlet, Navigate } from "react-router-dom"
-import { Header } from "~/components/shared/Header";
-import { useAppSelector } from "~/lib/StoreHooks";
+import { Header } from "../components/shared/Header";
+import { useAppSelector } from "../lib/StoreHooks";
 
 const PrivateLayout = () => {
     const { data } = useAppSelector((state) => state.auth)

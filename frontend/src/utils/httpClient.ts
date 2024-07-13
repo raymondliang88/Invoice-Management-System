@@ -16,7 +16,6 @@ const HttpClient = () => {
     // Set the AUTH token for any request
     instance.interceptors.request.use(function (config) {
         const { data } = store.getState()?.auth
-        console.log(data)
         config.headers.Authorization = data?.auth_token ? `Bearer ${data?.auth_token}` : '';
         return config;
     });

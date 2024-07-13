@@ -1,4 +1,4 @@
-import { BASE_URL } from 'src/constants';
+import { BASE_URL } from '../constants';
 import HttpClient from '../utils/HttpClient'
 
 export const getInvoices = async () => {

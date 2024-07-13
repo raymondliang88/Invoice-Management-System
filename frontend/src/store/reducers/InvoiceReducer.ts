@@ -1,5 +1,5 @@
 import { createReducer } from '@reduxjs/toolkit'
-import { getInvoiceData } from '../types/InvoiceTypes';
+import { setInvoiceData } from '../types/InvoiceTypes';
 
 interface DataReducer {
     data: Invoice[];
@@ -10,7 +10,7 @@ const initialState: DataReducer = {
 }
 
 const dataReducer = createReducer<DataReducer>(initialState, (builder) => {
-    builder.addCase(getInvoiceData, (state, action) => {
+    builder.addCase(setInvoiceData, (state, action) => {
         state.data = action.payload
     })
 })

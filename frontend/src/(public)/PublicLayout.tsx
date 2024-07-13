@@ -1,12 +1,14 @@
 import { Outlet, Navigate } from "react-router-dom"
+import { useAppSelector } from "../lib/StoreHooks"
 
 const PublicLayout = () => {
-    const isAuthenticate = false;
+    const { data } = useAppSelector((state) => state.auth)
+
 
     return (
         <>
-            {isAuthenticate ? (
-                <Navigate to="/" />
+            {data ? (
+                <Navigate to="/invoices" />
             ) : (
                 <>
                     <section className="flex flex-1 justify-center items-center flex-col py-10">
