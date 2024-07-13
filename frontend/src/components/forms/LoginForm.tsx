@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import FormField from "../FormField";
 import { FormData, LoginSchema } from "../../types";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { LoginFormData } from "~/types/LoginFormData";
+import { LoginFormData } from "../../types/LoginFormData";
 
 interface Props {
     onSubmitForm: (data: LoginFormData) => void;

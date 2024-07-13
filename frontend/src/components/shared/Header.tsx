@@ -1,4 +1,7 @@
+import { useAppSelector } from "../../lib/StoreHooks"
+
 export const Header = () => {
+    const { data } = useAppSelector((state) => state.auth)
     return (
         <div className="px-4 pb-5 pt-7 ring-1 ring-zinc-950/5 dark:ring-white/5">
             <div className="mx-auto flex items-center justify-between px-2 sm:px-4 lg:max-w-7xl">
@@ -30,7 +33,7 @@ export const Header = () => {
                         type="button"
                         className="inline-flex text-zinc-300 outline-blue-500 hover:text-zinc-400 dark:text-zinc-500 dark:hover:text-zinc-400"
                     >
-                        Welcome back, Raymond
+                        Welcome back, {data?.name}
                     </button>
                 </div>
             </div>
