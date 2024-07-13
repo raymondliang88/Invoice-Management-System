@@ -1,17 +1,18 @@
 import { createReducer } from '@reduxjs/toolkit'
-import { setContents } from '../actions/data'
+import { setAuthData } from '../types/authTypes'
+import { AuthResp } from '~/types/AuthResp';
 
 interface DataReducer {
-    contents: string[]
+    data: AuthResp | null;
 }
 
 const initialState: DataReducer = {
-    contents: []
+    data: null
 }
 
 const dataReducer = createReducer<DataReducer>(initialState, (builder) => {
-    builder.addCase(setContents, (state, action) => {
-        state.contents = action.payload
+    builder.addCase(setAuthData, (state, action) => {
+        state.data = action.payload
     })
 })
 
