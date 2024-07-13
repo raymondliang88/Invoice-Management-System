@@ -1,7 +1,10 @@
+import Invoices from "~/components/Invoices"
 
 const InvoicesPage = () => {
+    const data: Invoice[] = []
+
     return (
-        <div>Invoices</div>
+        <Invoices data={data} />
     )
 }
 

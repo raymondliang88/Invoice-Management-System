@@ -9,19 +9,22 @@ import InvoicesPage from './(private)/pages/InvoicesPage'
 
 import './index.css'
 import PublicLayout from './(public)/PublicLayout'
+import PrivateLayout from './(private)/PrivateLayout'
 
 const MainComponent: React.FC = () => {
     return (
-        <div className="min-h-full h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-            <div className="max-w-md w-full space-y-8">
+        <div className="main">
+            <div className="w-full space-y-8">
                 <Router>
                     <Routes>
+                        <Route element={<PrivateLayout />}>
+                            <Route path={ROUTES.INOVICES_ROUTE} element={<InvoicesPage />} />
+                        </Route>
                         <Route element={<PublicLayout />} >
                             <Route path={ROUTES.HOMEPAGE_ROUTE} element={<HomePage />} />
                             <Route path={ROUTES.LOGIN_ROUTE} element={<LoginPage />} />
+                            <Route path="*" element={<NotFoundPage />} />
                         </Route>
-                        <Route path={ROUTES.INOVICES_ROUTE} element={<InvoicesPage />} />
-                        <Route path="*" element={<NotFoundPage />} />
                     </Routes>
                 </Router>
             </div>

@@ -22,9 +22,11 @@ const LoginPage: React.FC = () => {
     }
 
     return (
-        <div className='block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700'>
-            <FormHeader />
-            <LoginForm onSubmitForm={onSubmitForm} />
+        <div className='min-h-full h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8'>
+            <div className='block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700'>
+                <FormHeader />
+                <LoginForm onSubmitForm={onSubmitForm} />
+            </div>
         </div>
     )
 }

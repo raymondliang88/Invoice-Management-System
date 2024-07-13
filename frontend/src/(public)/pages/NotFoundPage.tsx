@@ -6,10 +6,10 @@ const NotFoundPage: React.FC = () => {
     const navigate = useNavigate()
 
     /**
-     * Call this function to redirect the user to the homepage.
+     * Call this function to redirect the user to the login.
      */
     const redirectToHomePage = () => {
-        navigate(ROUTES.HOMEPAGE_ROUTE)
+        navigate(ROUTES.LOGIN_ROUTE)
     }
 
     return (
