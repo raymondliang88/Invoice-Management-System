@@ -1,9 +1,10 @@
-import { LoginFormData } from '~/types/LoginFormData'
-import HttpClient from '~/utils/httpClient'
+import { LoginFormData } from '../types/LoginFormData'
+import HttpClient from '../utils/HttpClient'
 
-const baseURl = 'https://www.google.com'
+const baseURl = 'http://localhost:3000'
 
 export const loginUser = async (data: LoginFormData) => {
+    await HttpClient.get(baseURl);
     return {
         data: {
             auth_token: '123',

@@ -1,13 +1,14 @@
 import { Outlet, Navigate } from "react-router-dom"
 import { Header } from "~/components/shared/Header";
+import { useAppSelector } from "~/lib/StoreHooks";
 
 const PrivateLayout = () => {
-    const isAuthenticate = true;
+    const { data } = useAppSelector((state) => state.auth)
 
     return (
         <>
-            {!isAuthenticate ? (
-                <Navigate to="/" />
+            {!data ? (
+                <Navigate to="/login" />
             ) : (
                 <>
                     <section className="">

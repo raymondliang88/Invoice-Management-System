@@ -1,6 +1,6 @@
 import { createReducer } from '@reduxjs/toolkit'
-import { setAuthData } from '../types/authTypes'
-import { AuthResp } from '~/types/AuthResp';
+import { setAuthData } from '../types/AuthTypes'
+import { AuthResp } from '../../types/AuthResp';
 
 interface DataReducer {
     data: AuthResp | null;

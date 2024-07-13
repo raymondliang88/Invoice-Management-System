@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { store } from '../store';
 
 const HttpClient = () => {
     const defaultOptions = {
@@ -14,8 +15,9 @@ const HttpClient = () => {
 
     // Set the AUTH token for any request
     instance.interceptors.request.use(function (config) {
-        const token = localStorage.getItem('token');
-        config.headers.Authorization = token ? `Bearer ${token}` : '';
+        const { data } = store.getState()?.auth
+        console.log(data)
+        config.headers.Authorization = data?.auth_token ? `Bearer ${data?.auth_token}` : '';
         return config;
     });
 

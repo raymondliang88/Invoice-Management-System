@@ -1,8 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { AppDispatch } from '..'
-import { setAuthData } from '../types/authTypes'
-import { loginUser } from '~/api/auth'
-import { LoginFormData } from '~/types/LoginFormData'
+import { setAuthData } from '../types/AuthTypes'
+import { loginUser } from '../../api/Auth'
+import { LoginFormData } from '../../types/LoginFormData'
 
 export const authenticateUser = createAsyncThunk<void, LoginFormData, { dispatch: AppDispatch }>('post/authenticateUser', async (formData, { dispatch }) => {
     try {
