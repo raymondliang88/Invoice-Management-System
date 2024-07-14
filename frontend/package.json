@@ -25,8 +25,8 @@
         "zod": "^3.23.8"
     },
     "scripts": {
-        "start": "vite --port 3000 --open",
-        "dev": "vite --port 3000 --open",
+        "start": "vite --port 3001 --open",
+        "dev": "vite --port 3001 --open",
         "build": "vite build",
         "serve": "vite preview --open",
         "test": "jest",

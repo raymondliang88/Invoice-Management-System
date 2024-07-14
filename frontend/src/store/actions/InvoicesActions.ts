@@ -6,7 +6,7 @@ import { setInvoiceData } from '../types/InvoiceTypes'
 export const getInvoicesData = createAsyncThunk<void, {}, { dispatch: AppDispatch }>('post/get-invoices', async ({ }, { dispatch }) => {
     try {
         const data = (await getInvoices()).data
-        dispatch(setInvoiceData([]))
+        dispatch(setInvoiceData(data))
     } catch (e) {
         console.error(e)
         throw e

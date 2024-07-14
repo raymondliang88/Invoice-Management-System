@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import { Invoice } from '@prisma/client';
 import { PrismaService } from 'src/prisma/prisma.service';
+import { InvoiceEntity } from './entities/invoice.entity';
 
 @Injectable()
 export class InvoicesService {
@@ -9,11 +9,11 @@ export class InvoicesService {
 
   }
 
-  async findAll(userId: number): Promise<Invoice[]> {
+  async findAll(userId: number): Promise<InvoiceEntity[]> {
     return this.prisma.invoice.findMany({ where: { user_id: userId } });
   }
 
-  async findOne(id: number, userId: number): Promise<Invoice> {
+  async findOne(id: number, userId: number): Promise<InvoiceEntity> {
     return this.prisma.invoice.findUnique({ where: { id, user_id: userId } });
   }
 

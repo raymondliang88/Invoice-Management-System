@@ -1,10 +1,9 @@
 import { IsNotEmpty, IsNumber, IsString, IsBoolean, IsDate } from 'class-validator';
-import { PartialType } from '@nestjs/mapped-types';
 
-export class CreateInvoiceDto {
+export class InvoiceDto {
     @IsString()
     @IsNotEmpty()
-    vendor_name: string;
+    vendorName: string;
 
     @IsNumber()
     @IsNotEmpty()
@@ -12,7 +11,7 @@ export class CreateInvoiceDto {
 
     @IsDate()
     @IsNotEmpty()
-    due_date: Date;
+    dueDate: Date;
 
     @IsString()
     @IsNotEmpty()
@@ -20,11 +19,10 @@ export class CreateInvoiceDto {
 
     @IsNumber()
     @IsNotEmpty()
-    user_id: number;
+    userId: number;
 
     @IsBoolean()
     @IsNotEmpty()
     paid: boolean;
 }
 
-export class UpdateInvoiceDto extends PartialType(CreateInvoiceDto) { }

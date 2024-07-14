@@ -2,9 +2,10 @@ import moment from "moment";
 
 interface Props {
     data: Invoice[];
+    viewDetails: (data: Invoice) => void;
 }
 
-export const Invoices = ({ data }: Props) => {
+export const Invoices = ({ data, viewDetails }: Props) => {
     return (
         <div className="px-10 py-10 relative overflow-x-auto">
             <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -34,7 +35,7 @@ export const Invoices = ({ data }: Props) => {
                     {
                         data?.map((item) => {
                             return (
-                                <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                <tr onClick={() => viewDetails(item)} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                     <td className="px-6 py-4">
                                         {'09/11/2023'}
                                     </td>
@@ -48,7 +49,7 @@ export const Invoices = ({ data }: Props) => {
                                         {item?.description}
                                     </td>
                                     <td className="px-6 py-4">
-                                        {moment(item?.dueDate).format('mm/DD/YYYY')}
+                                        {moment(item?.dueDate).format('MM/DD/YYYY')}
                                     </td>
                                     <td className="px-6 py-4">
                                         {item?.paid ? "Paid" : "Open"}

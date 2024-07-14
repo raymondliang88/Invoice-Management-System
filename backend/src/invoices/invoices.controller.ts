@@ -4,6 +4,7 @@ import { User } from 'src/users/user.decorator';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 import { ApiBearerAuth, ApiOkResponse } from '@nestjs/swagger';
 import { InvoiceEntity } from './entities/invoice.entity';
+import { InvoiceDto } from './dto/invoice.dto';
 
 @Controller('invoices')
 @UseGuards(JwtAuthGuard)
@@ -14,7 +15,8 @@ export class InvoicesController {
   @Get()
   @ApiOkResponse({ type: InvoiceEntity, isArray: true })
   async findAll(@User('id') userId: number) {
-    return this.invoicesService.findAll(userId);
+    const invoices = await this.invoicesService.findAll(userId);
+    return InvoiceEntity.toDTOsFromEntities(invoices)
   }
 
   @Get('/total')
@@ -31,7 +33,7 @@ export class InvoicesController {
     if (!invoice) {
       throw new NotFoundException;
     }
-    return this.invoicesService.findOne(Number(id), userId);
+    return InvoiceEntity.toDTOFromEntity(invoice)
   }
 
 }

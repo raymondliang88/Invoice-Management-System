@@ -1,5 +1,5 @@
 export interface AuthResp {
-    auth_token: string;
+    accessToken: string;
     email: string;
     name: string;
     id: Number;
