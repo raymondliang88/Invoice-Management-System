@@ -1,3 +1,4 @@
+import moment from "moment";
 
 interface Props {
     data: Invoice[];
@@ -5,12 +6,15 @@ interface Props {
 
 export const Invoices = ({ data }: Props) => {
     return (
-        <div className="relative overflow-x-auto">
+        <div className="px-10 py-10 relative overflow-x-auto">
             <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                 <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
                         <th scope="col" className="px-6 py-3">
-                            Vendor Name
+                            Date
+                        </th>
+                        <th scope="col" className="px-6 py-3">
+                            Payee Name
                         </th>
                         <th scope="col" className="px-6 py-3">
                             Amount
@@ -31,20 +35,23 @@ export const Invoices = ({ data }: Props) => {
                         data?.map((item) => {
                             return (
                                 <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                    <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                        {item?.vendorName}
-                                    </th>
                                     <td className="px-6 py-4">
-                                        {item?.amount}
+                                        {'09/11/2023'}
+                                    </td>
+                                    <td className="px-6 py-4">
+                                        {item?.vendorName}
+                                    </td>
+                                    <td className="px-6 py-4">
+                                        ${item?.amount}
                                     </td>
                                     <td className="px-6 py-4">
                                         {item?.description}
                                     </td>
                                     <td className="px-6 py-4">
-                                        {item?.dueDate?.toISOString()}
+                                        {moment(item?.dueDate).format('mm/DD/YYYY')}
                                     </td>
                                     <td className="px-6 py-4">
-                                        {item?.paid ? "PAID" : "PENDING"}
+                                        {item?.paid ? "Paid" : "Open"}
                                     </td>
                                 </tr>
                             )
