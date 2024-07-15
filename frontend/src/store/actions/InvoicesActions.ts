@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { AppDispatch } from '..'
-import { getInvoices } from '../../api/Invoice'
-import { setInvoiceData } from '../types/InvoiceTypes'
+import { getInvoicById, getInvoices } from '../../api/Invoice'
+import { setInvoiceData, setSelectedInvoice } from '../types/InvoiceTypes'
 
 export const getInvoicesData = createAsyncThunk<void, {}, { dispatch: AppDispatch }>('post/get-invoices', async ({ }, { dispatch }) => {
     try {
@@ -12,3 +12,14 @@ export const getInvoicesData = createAsyncThunk<void, {}, { dispatch: AppDispatc
         throw e
     }
 })
+
+export const getInvoice = createAsyncThunk<void, number, { dispatch: AppDispatch }>('post/get-invoices', async (id: number, { dispatch }) => {
+    try {
+        const data = (await getInvoicById(id)).data
+        dispatch(setSelectedInvoice(data))
+    } catch (e) {
+        console.error(e)
+        throw e
+    }
+})
+

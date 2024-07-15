@@ -1,13 +1,13 @@
 import { useAppDispatch, useAppSelector } from "../../lib/StoreHooks"
 import Invoices from "../../components/Invoices"
 import { useEffect, useState } from "react"
-import { getInvoicesData } from "../../store/actions/InvoicesActions"
+import { getInvoice, getInvoicesData } from "../../store/actions/InvoicesActions"
 import Modal from "../../components/shared/Modal"
 import moment from "moment"
+import { getInvoicById } from "src/api/Invoice"
 
 const InvoicesPage = () => {
-    const { data } = useAppSelector((state) => state.invoices)
-    const [selectedData, setSelectedData] = useState<any>()
+    const { data, selectedInvoice } = useAppSelector((state) => state.invoices)
     const [isOpen, setIsOpen] = useState(false)
     const dispatch = useAppDispatch()
 
@@ -16,33 +16,34 @@ const InvoicesPage = () => {
     }, [])
 
     const viewDetails = (data: Invoice) => {
-        setSelectedData(data)
+        dispatch(getInvoice(data.id))
+
         setIsOpen(true)
     }
 
     return (
         <div>
             <Invoices data={data} viewDetails={viewDetails} />
-            <Modal title={`Invoice #${selectedData?.id}`} isOpen={isOpen} close={() => setIsOpen(false)}>
-                {selectedData && <div>
+            <Modal title={`Invoice #${selectedInvoice?.id}`} isOpen={isOpen} close={() => setIsOpen(false)}>
+                {selectedInvoice && <div>
                     <div className="flex">
                         <div className="px-2">
-                            Payee Name: {selectedData?.vendorName}
+                            Payee Name: {selectedInvoice?.vendorName}
                         </div>
                     </div>
                     <div className="flex">
                         <div className="px-2">
-                            Amount: ${selectedData?.amount}
+                            Amount: {selectedInvoice?.amount ? `${selectedInvoice?.amount}` : ''}
                         </div>
                     </div>
                     <div className="flex">
                         <div className="px-2">
-                            Due Date: {moment(selectedData?.dueDate).format('MM/DD/YYYY')}
+                            Due Date: {moment(selectedInvoice?.dueDate).format('MM/DD/YYYY')}
                         </div>
                     </div>
                     <div className="flex">
                         <div className="px-2">
-                            Status: {selectedData?.paid ? "Paid" : "Open"}
+                            Status: {selectedInvoice?.paid ? "Paid" : "Open"}
                         </div>
                     </div>
                 </div>}
