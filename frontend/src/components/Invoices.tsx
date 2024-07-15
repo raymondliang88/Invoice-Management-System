@@ -35,7 +35,7 @@ export const Invoices = ({ data, viewDetails }: Props) => {
                     {
                         data?.map((item) => {
                             return (
-                                <tr onClick={() => viewDetails(item)} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                <tr onClick={() => viewDetails(item)} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 cursor-pointer">
                                     <td className="px-6 py-4">
                                         {'09/11/2023'}
                                     </td>

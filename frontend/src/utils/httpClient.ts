@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { store } from '../store';
+import { clearAuthData } from '../store/types/AuthTypes';
 
 const HttpClient = () => {
     const defaultOptions = {
@@ -18,6 +19,18 @@ const HttpClient = () => {
         const { data } = store.getState()?.auth
         config.headers.Authorization = data?.accessToken ? `Bearer ${data?.accessToken}` : '';
         return config;
+    });
+
+    //clear session data
+    instance.interceptors.response.use(response => {
+        return response;
+    }, error => {
+        if (error.response.status === 401) {
+            //place your reentry code
+            store.dispatch(clearAuthData({}))
+            window.location.href = '/login'
+        }
+        return error;
     });
 
     return instance;

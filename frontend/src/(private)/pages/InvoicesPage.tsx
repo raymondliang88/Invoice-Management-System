@@ -23,7 +23,7 @@ const InvoicesPage = () => {
     return (
         <div>
             <Invoices data={data} viewDetails={viewDetails} />
-            <Modal title={'Invoice Details'} isOpen={isOpen} close={() => setIsOpen(false)}>
+            <Modal title={`Invoice #${selectedData?.id}`} isOpen={isOpen} close={() => setIsOpen(false)}>
                 {selectedData && <div>
                     <div className="flex">
                         <div className="px-2">

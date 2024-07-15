@@ -1,6 +1,9 @@
 import { IsNotEmpty, IsNumber, IsString, IsBoolean, IsDate } from 'class-validator';
 
 export class InvoiceDto {
+    @IsNumber()
+    id: number;
+
     @IsString()
     @IsNotEmpty()
     vendorName: string;

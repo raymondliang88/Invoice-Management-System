@@ -20,6 +20,7 @@ export class InvoiceEntity implements Invoice {
 
     static toEntityFromDTO(invoiceDTO: InvoiceDto): InvoiceEntity {
         const invoiceEnity = new InvoiceEntity();
+        invoiceEnity.id = invoiceDTO.id;
         invoiceEnity.amount = invoiceDTO.amount
         invoiceEnity.description = invoiceDTO.description
         invoiceEnity.due_date = invoiceDTO.dueDate
@@ -43,6 +44,7 @@ export class InvoiceEntity implements Invoice {
 
     static toDTOFromEntity(invoiceEntity: InvoiceEntity): InvoiceDto {
         const invoiceDTO = new InvoiceDto();
+        invoiceDTO.id = invoiceEntity.id
         invoiceDTO.amount = invoiceEntity.amount
         invoiceDTO.description = invoiceEntity.description
         invoiceDTO.dueDate = invoiceEntity.due_date
