@@ -15,3 +15,8 @@ Login URL: http://localhost:3001/login
 email: admin@altametrics.com
 
 pass: admin
+
+## screenshots
+![plot](./screenshots/directory_2/Screenshot 2024-07-15 at 3.53.21 PM.png)
+
+![plot](./screenshots/directory_2/Screenshot 2024-07-15 at 3.53.00 PM.png)
