@@ -25,7 +25,7 @@ model User {
 model Invoice {
   id              Int     @id @default(autoincrement())
   vendor_name     String
-  amount          Float
+  amount          Float?
   due_date        DateTime
   description     String
   user            User @relation(fields: [user_id], references: [id])
