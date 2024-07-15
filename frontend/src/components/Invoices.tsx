@@ -18,13 +18,13 @@ export const Invoices = ({ data, viewDetails }: Props) => {
                             Payee Name
                         </th>
                         <th scope="col" className="px-6 py-3">
-                            Amount
-                        </th>
-                        <th scope="col" className="px-6 py-3">
                             Description
                         </th>
                         <th scope="col" className="px-6 py-3">
                             Due Date
+                        </th>
+                        <th scope="col" className="px-6 py-3">
+                            Amount
                         </th>
                         <th scope="col" className="px-6 py-3">
                             Status
@@ -43,13 +43,13 @@ export const Invoices = ({ data, viewDetails }: Props) => {
                                         {item?.vendorName}
                                     </td>
                                     <td className="px-6 py-4">
-                                        ${item?.amount}
-                                    </td>
-                                    <td className="px-6 py-4">
                                         {item?.description}
                                     </td>
                                     <td className="px-6 py-4">
                                         {moment(item?.dueDate).format('MM/DD/YYYY')}
+                                    </td>
+                                    <td className="px-6 py-4">
+                                        {item?.amount ? `$${item.amount}` : ''}
                                     </td>
                                     <td className="px-6 py-4">
                                         {item?.paid ? "Paid" : "Open"}
