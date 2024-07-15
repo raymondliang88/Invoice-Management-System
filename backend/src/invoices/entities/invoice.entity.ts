@@ -24,19 +24,22 @@ export class InvoiceEntity implements Invoice {
 
     static toEntityFromDTO(invoiceDTO: InvoiceDto): InvoiceEntity {
         const invoiceEnity = new InvoiceEntity();
-        invoiceEnity.id = invoiceDTO.id;
-        invoiceEnity.amount = invoiceDTO.amount
-        invoiceEnity.description = invoiceDTO.description
-        invoiceEnity.due_date = invoiceDTO.dueDate
-        invoiceEnity.paid = invoiceDTO.paid
-        invoiceEnity.user_id = invoiceDTO.userId
-        invoiceEnity.vendor_name = invoiceDTO.vendorName
-        invoiceEnity.createdAt = invoiceDTO.createdAt
+
+        if (invoiceDTO) {
+            invoiceEnity.id = invoiceDTO.id;
+            invoiceEnity.amount = invoiceDTO.amount
+            invoiceEnity.description = invoiceDTO.description
+            invoiceEnity.due_date = invoiceDTO.dueDate
+            invoiceEnity.paid = invoiceDTO.paid
+            invoiceEnity.user_id = invoiceDTO.userId
+            invoiceEnity.vendor_name = invoiceDTO.vendorName
+            invoiceEnity.createdAt = invoiceDTO.createdAt
+        }
 
         return invoiceEnity
     }
 
-    static toEntitiesFromDTOs(invoiceDTOs: InvoiceDto[]): InvoiceEntity[] {
+    static toEntitiesFromDTOs(invoiceDTOs: InvoiceDto[] = []): InvoiceEntity[] {
         const invoiceEntities: InvoiceEntity[] = []
 
         invoiceDTOs.map((invoiceDTO) => {
@@ -49,19 +52,22 @@ export class InvoiceEntity implements Invoice {
 
     static toDTOFromEntity(invoiceEntity: InvoiceEntity): InvoiceDto {
         const invoiceDTO = new InvoiceDto();
-        invoiceDTO.id = invoiceEntity.id
-        invoiceDTO.amount = invoiceEntity.amount
-        invoiceDTO.description = invoiceEntity.description
-        invoiceDTO.dueDate = invoiceEntity.due_date
-        invoiceDTO.paid = invoiceEntity.paid
-        invoiceDTO.userId = invoiceEntity.user_id
-        invoiceDTO.vendorName = invoiceEntity.vendor_name
-        invoiceDTO.createdAt = invoiceEntity.createdAt
+
+        if (invoiceEntity) {
+            invoiceDTO.id = invoiceEntity.id
+            invoiceDTO.amount = invoiceEntity.amount
+            invoiceDTO.description = invoiceEntity.description
+            invoiceDTO.dueDate = invoiceEntity.due_date
+            invoiceDTO.paid = invoiceEntity.paid
+            invoiceDTO.userId = invoiceEntity.user_id
+            invoiceDTO.vendorName = invoiceEntity.vendor_name
+            invoiceDTO.createdAt = invoiceEntity.createdAt
+        }
 
         return invoiceDTO
     }
 
-    static toDTOsFromEntities(invoiceEntities: InvoiceEntity[]): InvoiceDto[] {
+    static toDTOsFromEntities(invoiceEntities: InvoiceEntity[] = []): InvoiceDto[] {
         const invoiceDTOs: InvoiceDto[] = []
 
         invoiceEntities.map((invoiceEntity) => {
