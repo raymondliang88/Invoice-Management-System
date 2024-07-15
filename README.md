@@ -17,6 +17,8 @@ email: admin@altametrics.com
 pass: admin
 
 ## screenshots
-![plot](./screenshots/directory_2/Screenshot 2024-07-15 at 3.53.21 PM.png)
 
-![plot](./screenshots/directory_2/Screenshot 2024-07-15 at 3.53.00 PM.png)
+<p align="center">
+  <img src="/screenshots/image1.png" width="680" title="hover text">
+  <img src="/screenshots/image2.png" width="680" alt="accessibility text">
+</p>
