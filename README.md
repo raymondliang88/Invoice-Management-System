@@ -4,6 +4,9 @@
 ## ⚗️ How to run
 docker-compose up -d --build --force-recreate
 
+## ⚗️ Stop Services
+docker-compose down
+
 ## ⚗️ App Ports
 Backend App: http://localhost:3000
 
