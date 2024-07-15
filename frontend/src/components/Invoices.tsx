@@ -15,7 +15,7 @@ export const Invoices = ({ data, viewDetails }: Props) => {
                             Date
                         </th>
                         <th scope="col" className="px-6 py-3">
-                            Payee Name
+                            Payee
                         </th>
                         <th scope="col" className="px-6 py-3">
                             Description
