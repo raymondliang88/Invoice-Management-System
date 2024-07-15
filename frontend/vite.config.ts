@@ -38,8 +38,12 @@ export default defineConfig(({ mode }) => {
             }
         },
         server: {
-            port: 3000,
-            open: env.SERVER_OPEN_BROWSER === 'true'
+            watch: {
+                usePolling: true,
+            },
+            host: true, // needed for the Docker Container port mapping to work
+            strictPort: true,
+            port: 3001, // you can replace this port with any port
         },
         build: {
             outDir: 'build'

@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsNumber, IsString, IsBoolean, IsDate, isDate } from 'class-validator';
+import { IsNotEmpty, IsNumber, IsString, IsBoolean, IsDate, MinLength } from 'class-validator';
 
 export class InvoiceDto {
     @IsNumber()
@@ -6,6 +6,7 @@ export class InvoiceDto {
 
     @IsString()
     @IsNotEmpty()
+    @MinLength(4)
     vendorName: string;
 
     @IsNumber()

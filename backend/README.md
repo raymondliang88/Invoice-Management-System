@@ -46,8 +46,11 @@ $ yarn run start:prod
 ```
 
 ## Primsa Commands
-
 ```bash
+
+## setup database
+$ npx prisma migrate dev
+
 ## setup documents and generate tables
 $ npx prisma generate
 
