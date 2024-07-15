@@ -14,6 +14,6 @@ export class AuthController {
             throw new NotFoundException('Could not find user with email and password');
         }
 
-        return this.authService.login(loginDto);
+        return data;
     }
 }
