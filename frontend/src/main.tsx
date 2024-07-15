@@ -7,9 +7,11 @@ import './styles/main.sass'
 import LoginPage from './(public)/pages/Login'
 import InvoicesPage from './(private)/pages/InvoicesPage'
 
-import './index.css'
 import PublicLayout from './(public)/PublicLayout'
 import PrivateLayout from './(private)/PrivateLayout'
+
+import './index.css'
+import 'react-toastify/dist/ReactToastify.css';
 
 const MainComponent: React.FC = () => {
     return (
