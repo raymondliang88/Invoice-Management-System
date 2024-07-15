@@ -37,7 +37,7 @@ export const Invoices = ({ data, viewDetails }: Props) => {
                             return (
                                 <tr onClick={() => viewDetails(item)} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 cursor-pointer">
                                     <td className="px-6 py-4">
-                                        {'09/11/2023'}
+                                        {moment(item?.createdAt).format('MM/DD/YYYY')}
                                     </td>
                                     <td className="px-6 py-4">
                                         {item?.vendorName}

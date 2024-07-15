@@ -6,4 +6,5 @@ interface Invoice {
     description: string;
     userId: number;
     paid: boolean;
+    createdAt: Date;
 }

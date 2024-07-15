@@ -17,6 +17,10 @@ export class InvoiceEntity implements Invoice {
     id: number;
     @ApiProperty()
     paid: boolean
+    @ApiProperty()
+    createdAt: Date
+    @ApiProperty()
+    updatedAt: Date
 
     static toEntityFromDTO(invoiceDTO: InvoiceDto): InvoiceEntity {
         const invoiceEnity = new InvoiceEntity();
@@ -27,6 +31,7 @@ export class InvoiceEntity implements Invoice {
         invoiceEnity.paid = invoiceDTO.paid
         invoiceEnity.user_id = invoiceDTO.userId
         invoiceEnity.vendor_name = invoiceDTO.vendorName
+        invoiceEnity.createdAt = invoiceDTO.createdAt
 
         return invoiceEnity
     }
@@ -51,6 +56,7 @@ export class InvoiceEntity implements Invoice {
         invoiceDTO.paid = invoiceEntity.paid
         invoiceDTO.userId = invoiceEntity.user_id
         invoiceDTO.vendorName = invoiceEntity.vendor_name
+        invoiceDTO.createdAt = invoiceEntity.createdAt
 
         return invoiceDTO
     }
