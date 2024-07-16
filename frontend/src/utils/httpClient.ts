@@ -22,18 +22,21 @@ const HttpClient = () => {
         return config;
     });
 
-    //clear session data
+    //Erorr handler here
     instance.interceptors.response.use(response => {
         return response;
     }, error => {
-        if (error.response.status === 401) {
+        if (error?.response?.status === 401) {
             //place your reentry code
             const notify = () => toast.info("Your session has been expired.");
             store.dispatch(clearAuthData({}))
             notify();
             window.location.href = '/login'
-        } else if (error.response.status > 404 || error.response.status >= 500) {
+        } else if (error?.response?.status > 404 || error.response.status >= 500) {
             const notify = () => toast.error("Ooops, something went wrong.");
+            notify();
+        } else if (error?.response?.data?.message) {
+            const notify = () => toast.error(error?.response?.data.message);
             notify();
         }
         return error;

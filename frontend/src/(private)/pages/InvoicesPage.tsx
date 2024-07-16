@@ -1,52 +1,29 @@
 import { useAppDispatch, useAppSelector } from "../../lib/StoreHooks"
-import Invoices from "../../components/Invoices"
-import { useEffect, useState } from "react"
-import { getInvoice, getInvoicesData } from "../../store/actions/InvoicesActions"
+import { InvoiceList } from "../../components/InvoiceList"
+import { useState } from "react"
 import Modal from "../../components/shared/Modal"
-import moment from "moment"
-import { getInvoicById } from "src/api/Invoice"
+import { useGetInvoiceById, useGetInvoices } from "../../lib/react-query/Queries"
+import { setSelectedInvoice } from "../../store/types/InvoiceTypes"
+import { InvoiceDetails } from "../../components/InvoiceDetails"
 
 const InvoicesPage = () => {
-    const { data, selectedInvoice } = useAppSelector((state) => state.invoices)
+    const { selectedInvoice } = useAppSelector((state) => state.invoices)
     const [isOpen, setIsOpen] = useState(false)
     const dispatch = useAppDispatch()
+    const { data } = useGetInvoices();
+    const { mutateAsync: getInvoiceById, isPending } = useGetInvoiceById();
 
-    useEffect(() => {
-        dispatch(getInvoicesData({}))
-    }, [])
-
-    const viewDetails = (data: Invoice) => {
-        dispatch(getInvoice(data.id))
-
+    const viewDetails = async (invoice: Invoice) => {
+        const invoiceResp = await getInvoiceById(invoice.id)
+        dispatch(setSelectedInvoice(invoiceResp))
         setIsOpen(true)
     }
 
     return (
         <div>
-            <Invoices data={data} viewDetails={viewDetails} />
+            <InvoiceList data={data || []} viewDetails={viewDetails} />
             <Modal title={`Invoice #${selectedInvoice?.id}`} isOpen={isOpen} close={() => setIsOpen(false)}>
-                {selectedInvoice && <div>
-                    <div className="flex">
-                        <div className="px-2">
-                            Payee Name: {selectedInvoice?.vendorName}
-                        </div>
-                    </div>
-                    <div className="flex">
-                        <div className="px-2">
-                            Amount: {selectedInvoice?.amount ? `${selectedInvoice?.amount}` : ''}
-                        </div>
-                    </div>
-                    <div className="flex">
-                        <div className="px-2">
-                            Due Date: {moment(selectedInvoice?.dueDate).format('MM/DD/YYYY')}
-                        </div>
-                    </div>
-                    <div className="flex">
-                        <div className="px-2">
-                            Status: {selectedInvoice?.paid ? "Paid" : "Open"}
-                        </div>
-                    </div>
-                </div>}
+                <InvoiceDetails invoiceDetail={selectedInvoice} />
             </Modal>
         </div>
     )

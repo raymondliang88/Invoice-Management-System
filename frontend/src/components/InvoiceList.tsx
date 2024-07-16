@@ -5,7 +5,7 @@ interface Props {
     viewDetails: (data: Invoice) => void;
 }
 
-export const Invoices = ({ data, viewDetails }: Props) => {
+export const InvoiceList = ({ data, viewDetails }: Props) => {
     return (
         <div className="px-10 py-10 relative overflow-x-auto">
             <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -63,6 +63,3 @@ export const Invoices = ({ data, viewDetails }: Props) => {
         </div>
     )
 }
-
-
-export default Invoices
